@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Cell Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Exam Cell Management System</h1>
+    <p>Student Examination and Administration Portal</p>
+</header>
+
+<nav>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#students">Students</a>
+    <a href="#exams">Examinations</a>
+    <a href="#halltickets">Hall Tickets</a>
+    <a href="#payments">Fee Payments</a>
+    <a href="#results">Results</a>
+</nav>
+
+<main>
+
+    <!-- Dashboard -->
+    <section id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>Total Students</h3>
+                <p id="totalStudents">0</p>
+            </div>
+            <div class="card">
+                <h3>Total Exams</h3>
+                <p id="totalExams">0</p>
+            </div>
+            <div class="card">
+                <h3>Hall Tickets</h3>
+                <p id="totalTickets">0</p>
+            </div>
+            <div class="card">
+                <h3>Fee Payments</h3>
+                <p id="totalPayments">0</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Management -->
+    <section id="students">
+        <h2>Student Management</h2>
+
+        <form id="studentForm">
+            <input type="text" id="studentName"
+                placeholder="Student Name" required>
+
+            <input type="text" id="rollNumber"
+                placeholder="Roll Number" required>
+
+            <input type="text" id="department"
+                placeholder="Department" required>
+
+            <input type="text" id="year"
+                placeholder="Year (Example: 2nd Year)" required>
+
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" id="dateOfBirth" required>
+
+            <button type="submit">Add Student</button>
+        </form>
+
+        <h3>Student Records</h3>
+        <input type="text" id="studentSearch"
+            placeholder="Search by name or roll number">
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Roll Number</th>
+                        <th>Department</th>
+                        <th>Year</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="studentList"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Examination Management -->
+    <section id="exams">
+        <h2>Examination Management</h2>
+
+        <form id="examForm">
+            <input type="text" id="subject"
+                placeholder="Subject Name" required>
+
+            <label for="examDate">Exam Date</label>
+            <input type="date" id="examDate" required>
+
+            <label for="examTime">Exam Time</label>
+            <input type="time" id="examTime" required>
+
+            <input type="text" id="room"
+                placeholder="Exam Room" required>
+
+            <button type="submit">Add Examination</button>
+        </form>
+
+        <h3>Examination Schedule</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Room</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="examList"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Hall Tickets -->
+    <section id="halltickets">
+        <h2>Hall Ticket Management</h2>
+
+        <form id="ticketForm">
+            <input type="text" id="ticketRollNumber"
+                placeholder="Student Roll Number" required>
+
+            <select id="ticketExam" required>
+                <option value="">Select Examination</option>
+            </select>
+
+            <button type="submit">Generate Hall Ticket</button>
+        </form>
+
+        <h3>Search Hall Ticket</h3>
+        <form id="ticketSearchForm">
+            <input type="text" id="searchTicketRoll"
+                placeholder="Enter Roll Number" required>
+
+            <button type="submit">Search Hall Ticket</button>
+        </form>
+
+        <div id="ticketResult"></div>
+    </section>
+
+    <!-- Fee Payments -->
+    <section id="payments">
+        <h2>Examination Fee Payments</h2>
+
+        <form id="paymentForm">
+            <input type="text" id="paymentRoll"
+                placeholder="Student Roll Number" required>
+
+            <input type="number" id="paymentAmount"
+                placeholder="Fee Amount" min="1" step="0.01" required>
+
+            <input type="text" id="paymentPurpose"
+                placeholder="Payment Purpose" required>
+
+            <label for="paymentDate">Payment Date</label>
+            <input type="date" id="paymentDate" required>
+
+            <button type="submit">Record Payment</button>
+        </form>
+
+        <h3>Search Fee Payment History</h3>
+        <form id="paymentSearchForm">
+            <input type="text" id="searchPaymentRoll"
+                placeholder="Enter Student Roll Number" required>
+
+            <button type="submit">View Payment History</button>
+        </form>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Roll Number</th>
+                        <th>Amount</th>
+                        <th>Purpose</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentList"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results">
+        <h2>Examination Results</h2>
+
+        <form id="resultForm">
+            <input type="text" id="resultRoll"
+                placeholder="Student Roll Number" required>
+
+            <input type="text" id="resultSubject"
+                placeholder="Subject Name" required>
+
+            <input type="number" id="marks"
+                placeholder="Marks (0-100)" min="0" max="100" required>
+
+            <input type="text" id="grade"
+                placeholder="Grade" required>
+
+            <button type="submit">Add Result</button>
+        </form>
+
+        <h3>Result Records</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Roll Number</th>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                        <th>Grade</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="resultList"></tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Exam Cell Management System | Developed using HTML, CSS, JavaScript and Node.js</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
